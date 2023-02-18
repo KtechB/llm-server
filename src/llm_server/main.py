@@ -1,5 +1,3 @@
-from typing import Optional
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -27,16 +25,11 @@ class LLMResponse(BaseModel):
 
 
 @app.get("/healthcheck")
-def read_root():
+def healthcheck():
     return {}
 
 
 @app.post("/")
-async def run_dummy_llm(message: Message) -> LLMResponse:
+async def run_llm(message: Message) -> LLMResponse:
     answer = ask_question(message.text)
     return LLMResponse(text=answer)
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}

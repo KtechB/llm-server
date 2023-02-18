@@ -1,4 +1,3 @@
-from typing import Literal
 from langchain import PromptTemplate, LLMChain
 from langchain.llms import OpenAI
 
