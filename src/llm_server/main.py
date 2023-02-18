@@ -6,7 +6,7 @@ from llm_server.simple_agent import ask_question
 
 app = FastAPI()
 
-origins = ["http://localhost:5173", "http://localhost:8000"]
+origins = ["http://localhost:5173"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

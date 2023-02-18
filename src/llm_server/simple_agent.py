@@ -6,7 +6,7 @@ def ask_question(question: str) -> str:
     llm = OpenAI(temperature=0.9)
     template = """Question: {question}
 
-    Answer: Let's think step by step."""
+    Answer:"""
 
     prompt = PromptTemplate(template=template, input_variables=["question"])
     llm_chain = LLMChain(prompt=prompt, llm=llm)
