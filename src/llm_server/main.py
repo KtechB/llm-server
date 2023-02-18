@@ -29,7 +29,7 @@ def healthcheck():
     return {}
 
 
-@app.post("/")
+@app.post("/llm")
 async def run_llm(message: Message) -> LLMResponse:
     answer = ask_question(message.text)
     return LLMResponse(text=answer)
