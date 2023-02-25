@@ -30,6 +30,6 @@ def healthcheck():
 
 
 @app.post("/llm")
-async def run_llm(message: Message) -> LLMResponse:
+def run_llm(message: Message) -> LLMResponse:
     answer = ask_question(message.text)
     return LLMResponse(text=answer)
