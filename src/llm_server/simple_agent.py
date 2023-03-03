@@ -1,9 +1,9 @@
 from langchain import PromptTemplate, LLMChain
-from langchain.llms import OpenAI
+from langchain.llms import OpenAIChat
 
 
 def ask_question(question: str) -> str:
-    llm = OpenAI(temperature=0.9)
+    llm = OpenAIChat(model_name="gpt-3.5-turbo")
     template = """Question: {question}
 
     Answer:"""
