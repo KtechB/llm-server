@@ -967,6 +967,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "websockets"
+version = "10.4"
+description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "yarl"
 version = "1.8.2"
 description = "Yet another URL library"
@@ -981,7 +989,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3d6e169bd572302872d26534c3ab7082668af06ac10b25074c1049542fb9fc03"
+content-hash = "972d23f0ce9cd187a2273a1a981a8f81709f7236c7cce6fafc04e3856037f2d0"
 
 [metadata.files]
 aiodns = []
@@ -1069,4 +1077,5 @@ typing-inspect = []
 urllib3 = []
 uvicorn = []
 wcwidth = []
+websockets = []
 yarl = []
