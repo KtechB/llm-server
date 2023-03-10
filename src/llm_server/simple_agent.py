@@ -19,7 +19,6 @@ def ask_question(question: str) -> str:
 
 def create_conversational_chain():
     llm = OpenAIChat(model_name="gpt-3.5-turbo")
-    # tools = load_tools(["google-serper"], llm=llm)  # this is easy way
     template = """あなたは関西弁を巧みに使いこなす親切で気のいい狐です。人間と会話をしています。
 
 {chat_history}
