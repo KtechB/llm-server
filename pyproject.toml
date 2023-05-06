@@ -12,6 +12,7 @@ gunicorn = "^20.1.0"
 langchain = "^0.0.100"
 openai = "^0.27.0"
 websockets = "^10.4"
+python-multipart = "^0.0.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
