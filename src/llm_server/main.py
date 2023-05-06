@@ -1,9 +1,12 @@
+import io
 import logging
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+import openai
 from pydantic import BaseModel, Field
 
 from llm_server.simple_agent import ask_question, create_conversational_chain
+from llm_server.whisper import speech_to_text
 
 app = FastAPI()
 
@@ -22,6 +25,10 @@ class Message(BaseModel):
 
 
 class LLMResponse(BaseModel):
+    text: str
+
+
+class WhisperResponse(BaseModel):
     text: str
 
 
@@ -56,3 +63,11 @@ async def websocket_endpoint(ws: WebSocket):
                 text="Error happern.",
             )
             await ws.send_json(resp.dict())
+
+@app.post("/whisper/")
+async def text_to_speech(file: UploadFile) -> WhisperResponse:
+    audio = await file.read()
+    buffer = io.BytesIO(audio)
+    buffer.name= file.filename 
+    text = speech_to_text(audio)
+    return WhisperResponse(text=text)
