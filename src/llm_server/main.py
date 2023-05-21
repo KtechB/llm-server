@@ -69,5 +69,5 @@ async def text_to_speech(file: UploadFile) -> WhisperResponse:
     audio = await file.read()
     buffer = io.BytesIO(audio)
     buffer.name= file.filename 
-    text = speech_to_text(audio)
+    text = speech_to_text(buffer)
     return WhisperResponse(text=text)
