@@ -69,5 +69,6 @@ async def text_to_speech(file: UploadFile) -> WhisperResponse:
     audio = await file.read()
     buffer = io.BytesIO(audio)
     buffer.name= file.filename 
-    text = speech_to_text(buffer)
+    transcription = openai.Audio.transcribe(file=buffer,model="whisper-1", language="ja")
+    text = transcription["text"]
     return WhisperResponse(text=text)
